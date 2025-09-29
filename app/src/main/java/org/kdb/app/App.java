@@ -10,6 +10,8 @@ public class App
 {
     public static void main(String[] args) 
     {
-        System.out.println("KDB INITIAL COMMIT");    
+        System.out.println("KDB version INDEV");
+        
+        DatabaseManager databaseManager = new DatabaseManager("D:/Programming/kdb/testdb");
     }
 }
