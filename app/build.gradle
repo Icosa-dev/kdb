@@ -6,12 +6,26 @@ plugins {
     id 'buildlogic.java-application-conventions'
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation 'org.apache.commons:commons-text'
     implementation project(':utilities')
+    implementation 'com.google.code.gson:gson:2.11.0'
 }
 
 application {
     // Define the main class for the application.
     mainClass = 'org.kdb.app.App'
+}
+
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        showStandardStreams = true;
+        events "passed", "skipped", "failed"
+    }
 }
