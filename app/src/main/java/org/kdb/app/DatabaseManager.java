@@ -15,7 +15,8 @@ import java.io.File;
 
 public class DatabaseManager 
 {
-    private File dbPath;
+    private File file;
+    private String path;
 
     /**
      * @param path the path to the database
@@ -23,9 +24,10 @@ public class DatabaseManager
     public DatabaseManager(String path)
     {
         System.out.println("Opening database at: " + path);
-        this.dbPath = new File(path);
+        this.file = new File(path);
+        this.path = path;
         
-        if (this.dbPath.exists())
+        if (this.file.exists())
         {
             System.out.println("Database \"" + path + "\" already exists.");
         } else
@@ -33,13 +35,23 @@ public class DatabaseManager
             System.out.println("Database \"" + path + "\" does not already exist.");
 
             System.out.println("Creating database directory at: " + path);
-            if (this.dbPath.mkdirs())
+            if (this.file.mkdirs())
             {
-                System.out.println("Directory created: " + this.dbPath.getAbsolutePath());
+                System.out.println("Directory created: " + this.file.getAbsolutePath());
             } else
             {
-                System.out.println("Failed to create directory: " + this.dbPath.getAbsolutePath());
+                System.out.println("Failed to create directory: " + this.file.getAbsolutePath());
             }
         }
-    }        
+    }
+    
+    /**
+     * @return directory file for database
+     */
+    public File getFile() { return this.file; }
+
+    /**
+     * @return path to directory file for database
+     */
+    public String getPath() { return this.path; }
 }
